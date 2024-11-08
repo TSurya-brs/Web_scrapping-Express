@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Scrapping App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Amazon Products</h1>
+
+    <div id="spinner" style="display: none" class="spinner"></div>
+    <div id="product-list"></div>
+
+    <script>
+      async function fetchProducts() {
+        const spinner = document.getElementById("spinner");
+        spinner.style.display = "block";
+
+        const response = await fetch("/api/products");
+        const products = await response.json();
+        const productList = document.getElementById("product-list");
+
+        productList.innerHTML = "";
+
+        products.forEach((product) => {
+          const productItem = document.createElement("div");
+          productItem.classList.add("product-item");
+          productItem.innerHTML = `
+            <img src="${product.imageUrl}" alt="${product.title}" />
+            <h2 class="modal-trigger" data-title="${product.title}">
+                ${product.title}
+            </h2>
+            <p>${product.price}</p>
+        `;
+          productList.appendChild(productItem);
+        });
+
+        spinner.style.display = "none";
+      }
+
+      fetchProducts();
+    </script>
+  </body>
+</html>
