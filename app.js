@@ -2,7 +2,7 @@ const express = require("express");
 const puppeteer = require("puppeteer");
 const path = require("path");
 
-const port = 8080;
+const port = 10000;
 const url =
   "https://www.amazon.in/gp/browse.html?node=4092115031&ref_=nav_em_sbc_tvelec_gaming_consoles_0_2_9_12";
 
