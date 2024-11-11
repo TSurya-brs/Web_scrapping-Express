@@ -19,10 +19,15 @@ app.get("/api/products", async (req, res) => {
   console.log("Received request for products");
 
   try {
-    // Launch Puppeteer with necessary options for Render
     const browser = await puppeteer.launch({
       headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--remote-debugging-port=9222",
+      ],
+      executablePath: process.env.CHROME_PATH || puppeteer.executablePath(),
     });
 
     const page = await browser.newPage();
