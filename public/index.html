@@ -20,7 +20,6 @@
         try {
           const response = await fetch("/api/products");
 
-          // Check if the response is successful
           if (!response.ok) {
             throw new Error("Failed to fetch products");
           }
@@ -30,7 +29,6 @@
 
           productList.innerHTML = ""; // Clear previous results
 
-          // Check if the response is an array
           if (Array.isArray(products)) {
             products.forEach((product) => {
               const productItem = document.createElement("div");
@@ -53,11 +51,10 @@
           productList.innerHTML =
             "<p>Error loading products. Please try again later.</p>";
         } finally {
-          spinner.style.display = "none"; // Hide spinner after loading
+          spinner.style.display = "none";
         }
       }
 
-      // Call the function to fetch and display products
       fetchProducts();
     </script>
   </body>

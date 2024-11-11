@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "render-build": "npm install puppeteer"
+    "render-build": "npm install puppeteer-core"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chrome-aws-lambda": "^10.1.0",
     "express": "^4.21.1",
     "nodemon": "^3.1.7",
-    "puppeteer": "^23.6.1"
+    "puppeteer": "^23.7.1",
+    "puppeteer-core": "^10.1.0"
   }
 }
